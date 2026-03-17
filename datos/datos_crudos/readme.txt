@@ -1,1 +1,1 @@
-Datos crudos proveniente de la fuente de datos, que inicializan el pipeline de datos del proyecto.
+Datos crudos proveniente de la fuente de datos, que dan inicio al pipeline de datos del proyecto.
