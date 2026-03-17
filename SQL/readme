@@ -1,0 +1,5 @@
+Este directorio contiene los scripts SQL utilizados en el desarollo del proyecto.
+El motor de BD utilizando en el proyecto es MySQL.
+
+Scripts:
+1. Creación de la base de datos y definición de schemas.
