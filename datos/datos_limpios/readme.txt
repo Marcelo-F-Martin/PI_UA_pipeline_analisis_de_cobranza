@@ -1,1 +1,2 @@
-Datos limpios generados luego del proceso de ETL con los scripts de python. Estos archivos son enviados para su almacen a la base de datos MySQL.
+Es el DataFrame transformado generado como output en el proceso de ETL con el script de python (nombre del script). 
+Este archivo es ingestado con el script de python (nombre del script) en el DWH en MySQL creado con script SQL (nombre script).
