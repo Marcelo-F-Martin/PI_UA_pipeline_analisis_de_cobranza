@@ -1,2 +1,3 @@
-Es el DataFrame transformado generado como output en el proceso de ETL con el script de python (nombre del script). 
-Este archivo es ingestado con el script de python (nombre del script) en el DWH en MySQL creado con script SQL (nombre script).
+Es el DataFrame resultante del proceso de ETL ejecutado con el script de python (nombre del script).
+A efectos prácticos, se facilita el archivo en formato CSV.
+Este DataFramen es ingestado con el script de python (nombre del script) en el DWH en MySQL, el cual fue creado con script SQL (nombre script).
