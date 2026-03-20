@@ -5272,12 +5272,3 @@ INSERT INTO cobranzas_capa_uno.dim_contratos (id_contrato, id_cliente, id_especi
     ('02EEG', 'CL01615Z', 'ESP18'),
     ('MIARI', 'CL00752K', 'ESP18'),
     ('1G8O4', 'CL01470V', 'ESP17');
-    
-
-  /*  consulta para verificar los errores en campo 'contratos'
-	select 
-		*,
-        length(id_contrato)
-    from cobranzas_capa_uno.dim_contratos
-    where length(id_contrato) != 5;
-*/
