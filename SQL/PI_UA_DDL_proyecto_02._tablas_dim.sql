@@ -1,18 +1,18 @@
-/* CREACION DE BASE DE DATOS Y DEFINICION DE ESCHEMAS
-===================================================
+/* 1 - BASE DE DATOS Y DEFINICION DE ESCHEMAS
 */
 
-/* 1 - Crea base de datos capa uno (ingesta sin transformaciones)
+/* 1.1 - BASE DE DATOS
+	Dropea y crea base de datos capa uno (ingesta sin transformaciones)
 */
-CREATE DATABASE IF NOT EXISTS cobranzas_capa_uno; 
+DROP DATABASE IF EXISTS cobranzas_capa_uno;
+CREATE DATABASE cobranzas_capa_uno; 
 
-/* 
-2 - Crea tabla para estacionamiento de datos ingestados, previo a carga en tabla fact_cobranzas.
-	Esta tabla se sobreescribe con cada ingesta (truncate + insert) desde script python
+/* 1.2 - TABLAS DE HECHO
+	1.2.1 - Crea tabla de hechos para estacionamiento de datos ingestados, previo a carga en tabla principal fact_cobranzas.
+			Esta tabla se sobreescribe con cada ingesta (truncate + insert) desde script python.
+    1.2.2 - Crea tabla de hechos principal fact_cobranzas.
 */
-
 DROP TABLE IF EXISTS cobranzas_capa_uno.temp_cobranzas;
-
 CREATE TABLE cobranzas_capa_uno.temp_cobranzas (
 id_cobro int not null auto_increment, -- es PK autoincremental
 periodo varchar(10),
@@ -28,11 +28,7 @@ ultimo_update DATETIME DEFAULT CURRENT_TIMESTAMP, # se incorpora para tracking d
 PRIMARY KEY (id_cobro)
 ); 
 
-/* 
-3 - Crea tabla de hechos fact_cobranzas
-*/
 DROP TABLE IF EXISTS cobranzas_capa_uno.fact_cobranzas;
-
 CREATE TABLE cobranzas_capa_uno.fact_cobranzas (
 id_cobro int not null auto_increment, -- es PK autoincremental
 periodo varchar(10),
@@ -48,42 +44,9 @@ ultimo_update DATETIME DEFAULT CURRENT_TIMESTAMP, # se incorpora para tracking d
 PRIMARY KEY (id_cobro)
 );
 
-/* 
-4 - Crea tablas que dimensionan fact_cobranzas
+/* 1.3 - TABLAS DIMENSIONES
+	Crea tablas que dimensionan fact_cobranzas e inserta registros en cada una.
 */
-
-
--- =================================================
--- pureba insertar ciertas columnas en tabla fact
--- incorporar que verifique el periodo antes de insertar
--- ver de incorporar un truncate + insert tambien en tabla fact_cobranzas
-
-insert into cobranzas_capa_uno.fact_cobranzas (	
-	periodo, 
-	asesor, 
-	fecha_operacion, 
-	contrato, 
-	comision, 
-	valor_neto, 
-	porcentaje_comision, 
-	forma_pago, 
-	numero_recibo)
-(select 
-	periodo,
-	asesor,
-	fecha_operacion,
-	contrato,
-	comision,
-	valor_neto,
-	porcentaje_comision,
-	forma_pago,
-	numero_recibo
-from cobranzas_capa_uno.temp_cobranzas
-    );
-
-select * from cobranzas_capa_uno.temp_cobranzas limit 10;
-select count(*) from cobranzas_capa_uno.temp_cobranzas;
-
 DROP TABLE IF EXISTS cobranzas_capa_uno.dim_provincia;
 CREATE TABLE cobranzas_capa_uno.dim_provincia (
     id_provincia	VARCHAR(10),
@@ -5311,7 +5274,8 @@ INSERT INTO cobranzas_capa_uno.dim_contratos (id_contrato, id_cliente, id_especi
     ('1G8O4', 'CL01470V', 'ESP17');
     
 
-  /*  select 
+  /*  consulta para verificar los errores en campo 'contratos'
+	select 
 		*,
         length(id_contrato)
     from cobranzas_capa_uno.dim_contratos
