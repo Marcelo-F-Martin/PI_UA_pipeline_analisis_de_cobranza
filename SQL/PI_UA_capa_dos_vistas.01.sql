@@ -14,7 +14,7 @@ CREATE VIEW cobranzas_capa_dos.vista_fact_cobranzas AS
         comision,
         valor_neto,
         porcentaje_comision AS porc_liquidado_comision,
-        fecha_operacion AS 'fecha_cobro',
+        fecha_operacion AS fecha_cobro,
         CASE WHEN forma_pago = 'efe' THEN 'efectivo'
 			 WHEN forma_pago = 'transf' THEN 'transferencia'
              WHEN forma_pago = 'tc' THEN 'tarejeta de credito'
@@ -23,7 +23,7 @@ CREATE VIEW cobranzas_capa_dos.vista_fact_cobranzas AS
 		CASE WHEN hoja_origen LIKE 'B%' THEN 'broker'
 			 WHEN hoja_origen LIKE 'AI%' THEN 'asesores interno'
 			 ELSE 'no disponible'
-		END AS 'comision_de'
+		END AS comision_de
 	FROM cobranzas_capa_uno.fact_cobranzas;
 
 /* Vista dim_contratos
