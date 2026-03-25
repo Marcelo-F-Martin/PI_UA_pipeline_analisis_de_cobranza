@@ -21,7 +21,7 @@ CREATE VIEW cobranzas_capa_dos.vista_fact_cobranzas AS
              ELSE 'no disponible'
 		END AS medio_de_pago,
 		CASE WHEN hoja_origen LIKE 'B%' THEN 'broker'
-			 WHEN forma_pago LIKE 'AI%' THEN 'asesores interno'
+			 WHEN hoja_origen LIKE 'AI%' THEN 'asesores interno'
 			 ELSE 'no disponible'
 		END AS 'comision_de'
 	FROM cobranzas_capa_uno.fact_cobranzas;
