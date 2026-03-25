@@ -19,7 +19,11 @@ CREATE VIEW cobranzas_capa_dos.vista_fact_cobranzas AS
 			 WHEN forma_pago = 'transf' THEN 'transferencia'
              WHEN forma_pago = 'tc' THEN 'tarejeta de credito'
              ELSE 'no disponible'
-		END AS medio_de_pago
+		END AS medio_de_pago,
+		CASE WHEN hoja_origen LIKE 'B%' THEN 'broker'
+			 WHEN forma_pago LIKE 'AI%' THEN 'asesores interno'
+			 ELSE 'no disponible'
+		END AS 'comision_de'
 	FROM cobranzas_capa_uno.fact_cobranzas;
 
 /* Vista dim_contratos
