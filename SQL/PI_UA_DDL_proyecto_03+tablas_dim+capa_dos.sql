@@ -86,6 +86,7 @@ valor_neto float,
 porcentaje_comision float,
 forma_pago varchar(10),
 numero_recibo varchar(20),
+hoja_origen varchar(20),	
 ultimo_update DATETIME DEFAULT CURRENT_TIMESTAMP, # se incorpora para tracking de registros
 PRIMARY KEY (id_cobro)
 ); 
@@ -102,6 +103,7 @@ valor_neto float,
 porcentaje_comision float,
 forma_pago varchar(10),
 numero_recibo varchar(20),
+hoja_origen varchar(20),	
 ultimo_update DATETIME DEFAULT CURRENT_TIMESTAMP, # se incorpora para tracking de registros
 PRIMARY KEY (id_cobro)
 );
