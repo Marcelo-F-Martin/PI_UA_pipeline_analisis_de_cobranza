@@ -11,7 +11,8 @@ INSERT INTO cobranzas_capa_uno.fact_cobranzas
 	comision, 
 	valor_neto, 
 	porcentaje_comision, 
-	forma_pago, 
+	forma_pago,
+	hoja_origen,
 	numero_recibo)
 	(SELECT 
 		periodo,
@@ -22,6 +23,7 @@ INSERT INTO cobranzas_capa_uno.fact_cobranzas
 		valor_neto,
 		porcentaje_comision,
 		forma_pago,
+		hoja_origen,
 		numero_recibo
 	FROM cobranzas_capa_uno.temp_cobranzas
 	);
