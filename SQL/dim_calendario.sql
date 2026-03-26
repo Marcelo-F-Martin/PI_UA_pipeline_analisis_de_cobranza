@@ -1,8 +1,8 @@
 
-/*EJEMPLO tabla calendario
-USE db_seguros_gold;
 
-CREATE TABLE IF NOT EXISTS dim_calendario (
+/* dim_calendario
+*/
+CREATE TABLE IF NOT EXISTS cobranzas_capa_uno.dim_calendario (
     fecha DATE PRIMARY KEY,
     anio INT NOT NULL,
     mes INT NOT NULL,
@@ -19,13 +19,13 @@ CREATE TABLE IF NOT EXISTS dim_calendario (
 
 DELIMITER //
 
-CREATE PROCEDURE llenar_calendario(IN fecha_inicio DATE, IN fecha_fin DATE)
+CREATE PROCEDURE cobranzas_capa_uno.llenar_calendario(IN fecha_inicio DATE, IN fecha_fin DATE)
 BEGIN
     DECLARE fecha_actual DATE;
     SET fecha_actual = fecha_inicio;
     
     WHILE fecha_actual <= fecha_fin DO
-        INSERT INTO dim_calendario (
+        INSERT INTO cobranzas_capa_uno.dim_calendario (
             fecha, anio, mes, nombre_mes, mes_corto, dia, 
             dia_semana, nombre_dia, trimestre, es_fin_de_semana, mes_id
         ) VALUES (
@@ -48,8 +48,4 @@ END //
 DELIMITER ;
 
 -- Ejecutar para generar 10 años de fechas
-CALL llenar_calendario('2020-01-01', '2030-12-31');
-
-
-
-*/
+CALL cobranzas_capa_uno.llenar_calendario('2020-01-01', '2030-12-31');
