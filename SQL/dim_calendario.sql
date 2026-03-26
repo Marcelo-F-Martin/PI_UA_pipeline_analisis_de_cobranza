@@ -49,3 +49,17 @@ DELIMITER ;
 
 -- Ejecutar para generar 10 años de fechas
 CALL cobranzas_capa_uno.llenar_calendario('2020-01-01', '2030-12-31');
+
+DROP VIEW IF EXISTS cobranzas_capa_dos.vista_dim_calendario;
+CREATE VIEW cobranzas_capa_dos.vista_dim_calendario AS
+	select
+		fecha,
+        anio,
+        mes as num_mes,
+        nombre_mes,
+        mes_corto,
+        dia as num_dia,
+        nombre_dia,
+        trimestre as num_trimestre,
+        mes_id        
+    from cobranzas_capa_uno.dim_calendario;
