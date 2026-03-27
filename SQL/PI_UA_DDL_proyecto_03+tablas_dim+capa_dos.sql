@@ -71,6 +71,7 @@ CREATE TABLE IF NOT EXISTS cobranzas_capa_uno.dim_calendario (
     mes_id INT NOT NULL -- Ejemplo: 202603
 );
 
+DROP PROCEDURE IF EXISTS cobranzas_capa_uno.llenar_calendario;
 CREATE PROCEDURE cobranzas_capa_uno.llenar_calendario(IN fecha_inicio DATE, IN fecha_fin DATE)
 BEGIN
     DECLARE fecha_actual DATE;
