@@ -1,3 +1,9 @@
+/* IMPORTANTE
+    Este script esta preparado para correr con cliente desde python.
+    Si va a correr el script desde MySQL Workbench, descomente los comentarios 1-, 2- y 3-   
+*/
+
+-- 1- DELIMITER //
 CREATE PROCEDURE cobranzas_capa_uno.llenar_calendario(IN fecha_inicio DATE, IN fecha_fin DATE)
 BEGIN
     DECLARE fecha_actual DATE;
@@ -22,7 +28,9 @@ BEGIN
         );
         SET fecha_actual = DATE_ADD(fecha_actual, INTERVAL 1 DAY);
     END WHILE;
+-- 2- Para esta linea reemplace END; ; END//
 END;
 
--- Ejecutar para generar 10 años de fechas
+-- 3- DELIMITER ;
+
 CALL cobranzas_capa_uno.llenar_calendario('2020-01-01', '2030-12-31');
