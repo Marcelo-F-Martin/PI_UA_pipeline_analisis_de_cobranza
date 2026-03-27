@@ -3,6 +3,7 @@
     Si va a correr el script desde MySQL Workbench, descomente los comentarios 1-, 2- y 3-   
 */
 
+DROP PROCEDURE IF EXISTS cobranzas_capa_uno.llenar_calendario;
 -- 1- DELIMITER //
 CREATE PROCEDURE cobranzas_capa_uno.llenar_calendario(IN fecha_inicio DATE, IN fecha_fin DATE)
 BEGIN
