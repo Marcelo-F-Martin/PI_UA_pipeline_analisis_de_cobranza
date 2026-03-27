@@ -57,4 +57,20 @@ CREATE VIEW cobranzas_capa_dos.vista_dim_comercial AS
         dp.nombre_provincia AS 'provincia_asesor'
  	FROM cobranzas_capa_uno.dim_comercial dco
     LEFT JOIN cobranzas_capa_uno.dim_ciudad dci ON dco.id_ciudad = dci.id_ciudad
-    LEFT JOIN cobranzas_capa_uno.dim_provincia dp ON dci.id_provincia = dp.id_provincia;    
+    LEFT JOIN cobranzas_capa_uno.dim_provincia dp ON dci.id_provincia = dp.id_provincia;
+
+/* Vista dim_calendario
+*/
+DROP VIEW IF EXISTS cobranzas_capa_dos.vista_dim_calendario;
+CREATE VIEW cobranzas_capa_dos.vista_dim_calendario AS
+	select
+		fecha,
+        anio,
+        mes as num_mes,
+        nombre_mes,
+        mes_corto,
+        dia as num_dia,
+        nombre_dia,
+        trimestre as num_trimestre,
+        mes_id        
+    from cobranzas_capa_uno.dim_calendario;
