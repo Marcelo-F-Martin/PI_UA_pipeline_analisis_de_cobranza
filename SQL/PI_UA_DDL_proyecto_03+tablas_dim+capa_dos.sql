@@ -71,7 +71,6 @@ CREATE TABLE IF NOT EXISTS cobranzas_capa_uno.dim_calendario (
     mes_id INT NOT NULL -- Ejemplo: 202603
 );
 
-DELIMITER //
 CREATE PROCEDURE cobranzas_capa_uno.llenar_calendario(IN fecha_inicio DATE, IN fecha_fin DATE)
 BEGIN
     DECLARE fecha_actual DATE;
@@ -96,9 +95,7 @@ BEGIN
         );
         SET fecha_actual = DATE_ADD(fecha_actual, INTERVAL 1 DAY);
     END WHILE;
-END //
-DELIMITER ;
-
+END;
 -- Ejecutar para generar 10 años de fechas
 CALL cobranzas_capa_uno.llenar_calendario('2020-01-01', '2030-12-31');
 
