@@ -7,8 +7,7 @@
         Capa dos: Consulta de capa uno y almacena Vistas para servicio de BI.
 */
 DROP DATABASE IF EXISTS cobranzas_capa_uno;
-CREATE DATABASE cobranzas_capa_uno; 
-
+CREATE DATABASE cobranzas_capa_uno;
 DROP DATABASE IF EXISTS cobranzas_capa_dos;
 CREATE DATABASE cobranzas_capa_dos;
 
