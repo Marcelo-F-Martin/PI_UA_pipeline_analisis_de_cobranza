@@ -14,7 +14,7 @@ CREATE DATABASE cobranzas_capa_dos;
 
 
 /* 1.2 - TABLAS DE HECHO
-	1.2.1 - Crea tabla de hechos para estacionamiento de datos ingestados, previo a carga en tabla principal fact_cobranzas.
+	1.2.1 - Crea tabla de hechos para estacionamiento de datos ingestados, previo a la carga en tabla principal fact_cobranzas.
 			Esta tabla se sobreescribe con cada ingesta (truncate + insert) desde script python.
     1.2.2 - Crea tabla de hechos principal fact_cobranzas.
 */
@@ -53,7 +53,7 @@ CREATE TABLE cobranzas_capa_uno.fact_cobranzas (
 );
 
 /* 1.3 - TABLAS DIMENSIONES
-	1.3.1 - Crea tabla dimensión calendario, store procedure para insertar datos dentro y llama a SP.
+	1.3.1 - Crea tabla dimensión calendario. Esta tabla se ingesta con SP "llenar_calendario".
 	1.3.2 - Crea tablas que dimensionan fact_cobranzas e inserta registros en cada una.
 */
 
