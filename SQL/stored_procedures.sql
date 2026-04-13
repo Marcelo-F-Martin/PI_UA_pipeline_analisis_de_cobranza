@@ -1,6 +1,6 @@
 /* IMPORTANTE
-    Este script esta preparado para correr con cliente desde python.
-    Si va a correr el script desde MySQL Workbench, descomente los comentarios 1-, 2- y 3-   
+    Este script esta diseñado para ejecutar con cliente desde python. Saltea el workbench y pega directo al motor de la BD.
+    Si va a ejecutar el script desde MySQL Workbench, se debe descomentar los comentarios 1-, 2- y 3-   
 */
 
 DROP PROCEDURE IF EXISTS cobranzas_capa_uno.llenar_calendario;
@@ -34,4 +34,4 @@ END;
 
 -- 3- DELIMITER ;
 
-CALL cobranzas_capa_uno.llenar_calendario('2020-01-01', '2030-12-31');
+CALL cobranzas_capa_uno.llenar_calendario('2024-01-01', '2026-12-31');
