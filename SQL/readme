@@ -1,5 +1,8 @@
 Este directorio contiene los scripts SQL utilizados en el desarollo del proyecto.
-El motor de BD utilizando en el proyecto es MySQL.
+El motor de BD utilizando es MySQL.
 
 Scripts:
 1. Creación de la base de datos y definición de schemas.
+2. Ingesta de datos en tabla 'fact_cobranzas' desde 'temp_cobranzas'. 
+3. Creación de stored procedures 'llenar_calendario' para insertar datos de dimensión temporal a la tabla 'dim_calendario'.
+4. Creación de vistas en la base de datos 'cobranzas_capa_dos'. Estas vistas serán consumidas por BI.
