@@ -10,6 +10,7 @@
 DROP VIEW IF EXISTS cobranzas_capa_dos.vista_fact_cobranzas;
 CREATE VIEW cobranzas_capa_dos.vista_fact_cobranzas AS
 	SELECT 
+		id_cobro,
 		asesor,
         contrato,
         comision,
