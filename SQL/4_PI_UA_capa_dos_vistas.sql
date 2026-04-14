@@ -1,7 +1,8 @@
 /* CREA VISTAS PARA BD: cobranzas_capa_dos
    El propósito es aislar los datos para consumo de la base principal donde se produce ingesta y transformaciones.
-   Las vistas se crean en base a la lógica del negocio, dejando solo los campos relevantes para su análisis,
-   y agrupando algunas tabla de dimensiones para representar un modelo estrella.
+   Las vistas se crean en base a la lógica del negocio, conservando solo los campos relevantes para su análisis,
+   y agrupando algunas tabla de dimensiones para representar un modelo estrella más simplificado.
+   Se utiliza el condicional WHEN dar más claridad a ciertos valores de registros.	
 */
 
 /* Vista fact_cobranzas 
@@ -22,7 +23,7 @@ CREATE VIEW cobranzas_capa_dos.vista_fact_cobranzas AS
 		END AS medio_de_pago,
 		CASE WHEN hoja_origen LIKE 'B%' THEN 'broker'
 			 WHEN hoja_origen LIKE 'AI%' THEN 'asesores interno'
-			 ELSE 'no disponible'
+			 ELSE 'no identificado'
 		END AS comision_de
 	FROM cobranzas_capa_uno.fact_cobranzas;
 
