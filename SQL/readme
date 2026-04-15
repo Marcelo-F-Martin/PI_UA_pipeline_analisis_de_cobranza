@@ -1,5 +1,6 @@
 Este directorio contiene los scripts SQL utilizados en el desarollo del proyecto.
 El motor de BD utilizando es MySQL.
+La ejecución de los archivos se da por medio del código orquestador (PI_UA_orquestador.ipynb)
 
 Scripts:
 1. Creación de la base de datos y definición de schemas.
