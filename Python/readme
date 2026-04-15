@@ -1,1 +1,2 @@
-Este directorio almacena en archivos de Jupyter Notebooks los scripts de Python utilizados en el proyecto.
+Código fuente en lenguaje Python que orquesta el pipeline de datos.
+Disponible en formatos .ipynb y .py
