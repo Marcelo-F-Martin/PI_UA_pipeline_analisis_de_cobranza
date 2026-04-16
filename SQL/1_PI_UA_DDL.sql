@@ -5302,20 +5302,25 @@ INSERT INTO cobranzas_capa_uno.dim_contratos (id_contrato, id_cliente, id_especi
 	Una vez creadas todas las tablas se establecen las claves foraneas relacionadas
 */
 
-ALTER TABLE cobranzas_capa_uno.fact_cobranzas ADD CONSTRAINT fk_fact_cobranzas
-	FOREIGN KEY (asesor) REFERENCES cobranzas_capa_uno.dim_comercial(id_comercial) ON DELETE SET NULL,
-	FOREIGN KEY (fecha_operacion) REFERENCES cobranzas_capa_uno.dim_calendario(fecha) ON DELETE SET NULL,
-	FOREIGN KEY (contrato) REFERENCES cobranzas_capa_uno.dim_contratos(id_contrato) ON DELETE SET NULL;
+ALTER TABLE cobranzas_capa_uno.fact_cobranzas 
+	ADD CONSTRAINT fk_fact_asesor
+		FOREIGN KEY (asesor) REFERENCES cobranzas_capa_uno.dim_comercial(id_comercial) ON DELETE SET NULL,
+	ADD CONSTRAINT fk_fact_fecha
+		FOREIGN KEY (fecha_operacion) REFERENCES cobranzas_capa_uno.dim_calendario(fecha) ON DELETE SET NULL,
+	ADD CONSTRAINT fk_factcontrato
+		FOREIGN KEY (contrato) REFERENCES cobranzas_capa_uno.dim_contratos(id_contrato) ON DELETE SET NULL;
 
-ALTER TABLE cobranzas_capa_uno.dim_ciudad ADD CONSTRAINT fk_fact_ciudad
+ALTER TABLE cobranzas_capa_uno.dim_ciudad ADD CONSTRAINT fk_dim_ciudad_ciudad
 	FOREIGN KEY (id_ciudad) REFERENCES cobranzas_capa_uno.dim_provincia(id_provincia) ON DELETE SET NULL;
 
-ALTER TABLE cobranzas_capa_uno.dim_clientes ADD CONSTRAINT fk_fact_clientes
+ALTER TABLE cobranzas_capa_uno.dim_clientes ADD CONSTRAINT fk_dim_clientes_ciudad
 	FOREIGN KEY (id_ciudad) REFERENCES cobranzas_capa_uno.dim_ciudad(id_ciudad) ON DELETE SET NULL;
 
-ALTER TABLE cobranzas_capa_uno.dim_comercial ADD CONSTRAINT fk_fact_comercial
+ALTER TABLE cobranzas_capa_uno.dim_comercial ADD CONSTRAINT fk_dim_comercial_ciudad
 	FOREIGN KEY (id_ciudad) REFERENCES cobranzas_capa_uno.dim_ciudad(id_ciudad) ON DELETE SET NULL;
 
-ALTER TABLE cobranzas_capa_uno.dim_contratos ADD CONSTRAINT fk_fact_contratos
-	FOREIGN KEY (id_cliente) REFERENCES cobranzas_capa_uno.dim_clientes(id_cliente) ON DELETE SET NULL,
-	FOREIGN KEY (id_especialdiad) REFERENCES cobranzas_capa_uno.dim_especialidad(id_especialidad) ON DELETE SET NULL;
+ALTER TABLE cobranzas_capa_uno.dim_contratos 
+	ADD CONSTRAINT fk_dim_contratos_cliente
+		FOREIGN KEY (id_cliente) REFERENCES cobranzas_capa_uno.dim_clientes(id_cliente) ON DELETE SET NULL,
+	ADD CONSTRAINT fk_dim_contratos_especialidad
+		FOREIGN KEY (id_especialdiad) REFERENCES cobranzas_capa_uno.dim_especialidad(id_especialidad) ON DELETE SET NULL;
