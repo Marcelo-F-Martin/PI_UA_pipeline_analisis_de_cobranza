@@ -49,7 +49,10 @@ CREATE TABLE cobranzas_capa_uno.fact_cobranzas (
 	numero_recibo varchar(20),
 	hoja_origen varchar(20),	
 	ultimo_update DATETIME DEFAULT CURRENT_TIMESTAMP, # se incorpora para tracking de registros
-	PRIMARY KEY (id_cobro)
+	PRIMARY KEY (id_cobro),
+	FOREIGN KEY (asesor) REFERENCES cobranzas_capa_uno.dim_comercial(id_comercial) ON DELETE SET NULL,
+	FOREIGN KEY (fecha_operacion) REFERENCES cobranzas_capa_uno.dim_calendario(fecha) ON DELETE SET NULL,
+	FOREIGN KEY (contrato) REFERENCES cobranzas_capa_uno.dim_contratos(id_contrato) ON DELETE SET NULL
 );
 
 /* 1.3 - TABLAS DIMENSIONES
@@ -57,7 +60,8 @@ CREATE TABLE cobranzas_capa_uno.fact_cobranzas (
 	1.3.2 - Crea tablas que dimensionan fact_cobranzas e inserta registros en cada una.
 */
 
-CREATE TABLE IF NOT EXISTS cobranzas_capa_uno.dim_calendario (
+DROP TABLE IF EXISTS cobranzas_capa_uno.dim_calendario;
+CREATE TABLE cobranzas_capa_uno.dim_calendario (
     fecha DATE PRIMARY KEY,
     anio INT NOT NULL,
     mes INT NOT NULL,
@@ -95,7 +99,8 @@ CREATE TABLE cobranzas_capa_uno.dim_ciudad (
     id_ciudad	VARCHAR(10),
     nombre_ciudad	VARCHAR(50),
     id_provincia	VARCHAR(10),
-    PRIMARY KEY (id_ciudad)
+    PRIMARY KEY (id_ciudad),
+	FOREIGN KEY (id_ciudad) REFERENCES cobranzas_capa_uno.dim_provincia(id_provincia) ON DELETE SET NULL
 );
 
 INSERT INTO cobranzas_capa_uno.dim_ciudad (id_ciudad, nombre_ciudad, id_provincia) VALUES
@@ -212,7 +217,8 @@ CREATE TABLE cobranzas_capa_uno.dim_clientes (
     Id_cliente	VARCHAR(10),
     nombre_cliente	VARCHAR(512),
     id_ciudad	VARCHAR(10),
-    PRIMARY KEY (id_cliente)
+    PRIMARY KEY (id_cliente),
+	FOREIGN KEY (id_ciudad) REFERENCES cobranzas_capa_uno.dim_ciudad(id_ciudad) ON DELETE SET NULL
 );
 
 INSERT INTO cobranzas_capa_uno.dim_clientes (Id_cliente, nombre_cliente, id_ciudad) VALUES
@@ -2223,7 +2229,8 @@ CREATE TABLE cobranzas_capa_uno.dim_comercial (
     nombre_comercial	VARCHAR(512),
     tipo_comercial	VARCHAR(512),
     id_ciudad	VARCHAR(512),
-    PRIMARY KEY (id_comercial)
+    PRIMARY KEY (id_comercial),
+	FOREIGN KEY (id_ciudad) REFERENCES cobranzas_capa_uno.dim_ciudad(id_ciudad) ON DELETE SET NULL
 );
 
 INSERT INTO cobranzas_capa_uno.dim_comercial (id_comercial, nombre_comercial, tipo_comercial, id_ciudad) VALUES
@@ -2292,7 +2299,9 @@ CREATE TABLE cobranzas_capa_uno.dim_contratos (
     id_contrato	VARCHAR(50),
     id_cliente	VARCHAR(10),
     id_especialidad	VARCHAR(50),
-    PRIMARY KEY (id_contrato)
+    PRIMARY KEY (id_contrato),
+	FOREIGN KEY (id_cliente) REFERENCES cobranzas_capa_uno.dim_clientes(id_cliente) ON DELETE SET NULL,
+	FOREIGN KEY (id_especialdiad) REFERENCES cobranzas_capa_uno.dim_especialidad(id_especialidad) ON DELETE SET NULL
 );
 
 INSERT INTO cobranzas_capa_uno.dim_contratos (id_contrato, id_cliente, id_especialidad)	VALUES
