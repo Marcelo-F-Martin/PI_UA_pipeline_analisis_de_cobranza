@@ -5311,7 +5311,7 @@ ALTER TABLE cobranzas_capa_uno.fact_cobranzas
 		FOREIGN KEY (contrato) REFERENCES cobranzas_capa_uno.dim_contratos(id_contrato) ON DELETE SET NULL;
 
 ALTER TABLE cobranzas_capa_uno.dim_ciudad ADD CONSTRAINT fk_dim_ciudad_ciudad
-	FOREIGN KEY (id_ciudad) REFERENCES cobranzas_capa_uno.dim_provincia(id_provincia) ON DELETE SET NULL;
+	FOREIGN KEY (id_provincia) REFERENCES cobranzas_capa_uno.dim_provincia(id_provincia) ON DELETE SET NULL;
 
 ALTER TABLE cobranzas_capa_uno.dim_clientes ADD CONSTRAINT fk_dim_clientes_ciudad
 	FOREIGN KEY (id_ciudad) REFERENCES cobranzas_capa_uno.dim_ciudad(id_ciudad) ON DELETE SET NULL;
@@ -5323,4 +5323,4 @@ ALTER TABLE cobranzas_capa_uno.dim_contratos
 	ADD CONSTRAINT fk_dim_contratos_cliente
 		FOREIGN KEY (id_cliente) REFERENCES cobranzas_capa_uno.dim_clientes(id_cliente) ON DELETE SET NULL,
 	ADD CONSTRAINT fk_dim_contratos_especialidad
-		FOREIGN KEY (id_especialdiad) REFERENCES cobranzas_capa_uno.dim_especialidad(id_especialidad) ON DELETE SET NULL;
+		FOREIGN KEY (id_especialidad) REFERENCES cobranzas_capa_uno.dim_especialidad(id_especialidad) ON DELETE SET NULL;
