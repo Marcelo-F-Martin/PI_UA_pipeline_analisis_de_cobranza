@@ -18,15 +18,15 @@ Dar solución a la problemática planteada a partir de la orquestación de un pi
 <hr />
 
 ## 🛠️ Stack Tecnológico - Requisitos Previos
-1. **Windows** (orquestación diseñada para este OS).
-2. **Python 3.9+** (se recomienda el uso de Anaconda).
-3. **MySQL Server 8.0+** + **Connector/NET** (funcionando localmente) .
-4. **Power BI Desktop** (visualización final).
+- [x] **Windows** (orquestación diseñada para este OS).
+- [x] **Python 3.9+** (se recomienda el uso de Anaconda).
+- [x] **MySQL Server 8.0+** y **Connector/NET** (funcionando localmente) .
+- [x] **Power BI Desktop** (visualización final).
 <hr />
 
-## **`⚠️ Ejecución: Importante !!!`**
-
-Siga estos pasos para reproducir el pipeline en su entorno local:
+## ⚠️ Ejecución: 
+> [!IMPORTANT]  
+> Siga estos pasos para reproducir el pipeline en su entorno local:
 
 1. Descargue todos los archivos dentro de ‘**Descargas**’ en el mismo directorio local
 2. Modifique el archivo ‘.env.example’con sus credenciales de MySQL, y luego renombre el archivo a ‘**.env**’
