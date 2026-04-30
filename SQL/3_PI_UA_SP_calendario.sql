@@ -34,4 +34,4 @@ END;
 
 -- 3- DELIMITER ;
 
-CALL cobranzas_capa_uno.llenar_calendario('2024-01-01', '2026-12-31');
+CALL cobranzas_capa_uno.llenar_calendario('2025-01-01', '2025-12-31');
