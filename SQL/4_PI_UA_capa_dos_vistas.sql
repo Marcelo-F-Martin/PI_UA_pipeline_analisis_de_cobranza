@@ -69,10 +69,10 @@ CREATE VIEW cobranzas_capa_dos.vista_dim_calendario AS
 		fecha,
         anio,
         mes as num_mes,
-        nombre_mes,
-        mes_corto,
-        dia as num_dia,
-        nombre_dia,
+        elt(mes,'Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre') AS nombre_mes,
+        LEFT(elt(mes,'Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'), 3) AS mes_corto,
+        dia_semana as num_dia,
+        elt(dia_semana,'Lunes','Martes','Miércoles','Jueves','Viernes','Sabado','Domingo') AS nombre_dia,
         trimestre as num_trimestre,
         mes_id        
     from cobranzas_capa_uno.dim_calendario;
